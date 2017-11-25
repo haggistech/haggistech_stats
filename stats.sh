@@ -63,7 +63,7 @@ function print_logo
 exists=`ls /etc/ | grep "-release" | wc -l`
 if [ "$exists" -gt "0" ]; then
 #if [ -e /etc/*-release ]; then
-    id="$(cat /etc/*-release | grep -E '^ID[ ]*=[ ]*[A-Za-z]+[ ]*' | cut -d '=' -f 2)"
+    id="$(cat /etc/*-release 2>/dev/null | grep -E '^ID[ ]*=[ ]*[A-Za-z]+[ ]*' | cut -d '=' -f 2)"
     case $id in
         ubuntu)
             echo "                                       "
@@ -106,7 +106,7 @@ if [ "$exists" -gt "0" ]; then
             echo '                   `$$$$               '
             echo '                                       '
             ;;
-        mint)
+        linuxmint)
             echo '                                       '
             echo '.:::::::::::::::::::::::::;,.          '
             echo ',0000000000000000000000000000Oxl,      '
@@ -194,7 +194,7 @@ function print_screenshot
 # Collect release information.
 function get_release
 {
-test=$(lsb_release -a | grep Description:| sed -r 's/Description:"?([^"]+)"?/\1/')
+test=$(lsb_release -a 2>/dev/null | grep Description:| sed -r 's/Description:"?([^"]+)"?/\1/')
 os=${test#"${test%%[![:space:]]*}"}
 #exists=`ls /etc/ | grep "-release" | wc -l`
 #if [ -f /etc/debian_version ]; then
@@ -343,7 +343,7 @@ get_desktop_environment
 get_processes
 
 echo
-#print_logo
+print_logo
 echo
 echo "    $(tput bold)$(tput setaf 4)OS:$(tput sgr0) $os"
 echo "    $(tput bold)$(tput setaf 4)Hostname:$(tput sgr0) $host"
