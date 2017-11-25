@@ -41,7 +41,7 @@ echo "You have Version $localver. The latest version is $currver Please Update!"
 echo
 echo "You can update by running the following command"
 echo
-echo "wget -N https://raw.githubusercontent.com/haggistech/haggistech_stats/master/stats.sh"
+echo "curl https://raw.githubusercontent.com/haggistech/haggistech_stats/master/stats.sh > stats.sh"
 sleep 5
 fi
 
