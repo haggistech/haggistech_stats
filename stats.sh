@@ -42,8 +42,9 @@ echo
 echo "You can update by running the following command"
 echo
 echo "wget -N https://raw.githubusercontent.com/haggistech/haggistech_stats/master/stats.sh"
-fi
 sleep 5
+fi
+
 
 
 
