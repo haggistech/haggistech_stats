@@ -32,6 +32,21 @@
 #                           Global Variables                           #
 ########################################################################
 
+localver=1.0.1
+currver=$(curl https://raw.githubusercontent.com/haggistech/haggistech_stats/master/ver.txt 2> /dev/null)
+clear
+echo
+if [ $currver != $localver ]; then
+echo "You have Version $localver. The latest version is $currver Please Update!"
+echo
+echo "You can update by running the following command"
+echo
+echo "wget -N https://raw.githubusercontent.com/haggistech/haggistech_stats/master/stats.sh"
+fi
+sleep 5
+
+
+
 unset os         # Human-readable (pretty) name of the operating system
 unset host       # Hostname
 unset kernel     # Linux kernel build string
@@ -334,7 +349,7 @@ processes="$(ps aux --sort -rss | head | awk {'print $11'} | sed -n '2p')"
 #                                 Main                                 #
 ########################################################################
 
-clear
+#clear
 
 get_release
 get_uptime
